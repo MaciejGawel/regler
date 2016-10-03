@@ -16,3 +16,7 @@ erl_crash.dump
 /config/prod.secret.exs
 /config/dev.secret.exs
 /config/test.secret.exs
+
+/node_modules
+
+*.log
