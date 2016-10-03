@@ -13,7 +13,7 @@ var config = module.exports = {
   entry: {
     application: [
       web('css/application.sass'),
-      web('js/application.js'),
+      web('js/application.jsx'),
     ],
   },
 
