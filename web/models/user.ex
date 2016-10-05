@@ -1,6 +1,8 @@
 defmodule Regler.User do
   use Regler.Web, :model
 
+  @derive {Poison.Encoder, only: [:id, :username, :email]}
+
   schema "users" do
     field :username, :string
     field :email, :string
