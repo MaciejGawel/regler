@@ -11,6 +11,8 @@ defmodule Regler.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug Guardian.Plug.VerifyHeader
+    plug Guardian.Plug.LoadResource
   end
 
   scope "/api", Regler do
@@ -18,6 +20,9 @@ defmodule Regler.Router do
 
     scope "/v1" do
       post "/registrations", RegistrationController, :create
+
+      post "/sessions", SessionController, :create
+      delete "/sessions", SessionController, :delete
     end
   end
 
