@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function MainLayout() {
+export default function MainLayout(props) {
   return (
     <div>
-      {this.props.children}
+      {props.children}
     </div>
   );
 }
