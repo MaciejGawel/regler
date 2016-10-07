@@ -1,7 +1,7 @@
 import { push }           from 'react-router-redux';
 import Constants          from '../constants';
 import { httpPost }       from '../utils';
-// import { setCurrentUser } from './sessions';
+import { setCurrentUser } from './sessions';
 
 const Actions = {
   signUp: (requestData) => {
@@ -10,7 +10,7 @@ const Actions = {
       .then((data) => {
         localStorage.setItem('phoenixAuthToken', data.jwt);
 
-        // setCurrentUser(dispatch, data.user);
+        setCurrentUser(dispatch, data.user);
 
         dispatch(push('/'));
       })
