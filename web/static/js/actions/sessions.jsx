@@ -1,6 +1,15 @@
-import { push }     from 'react-router-redux';
-import Constants    from '../constants';
-import { httpPost } from '../utils';
+import { push }               from 'react-router-redux';
+import Constants              from '../constants';
+import { httpGet, httpPost }  from '../utils';
+
+export function setCurrentUser(dispatch, user) {
+  // Connect to socket
+
+  dispatch({
+    type: Constants.CURRENT_USER,
+    currentUser: user,
+  });
+}
 
 const Actions = {
   signIn: (email, password) => {
@@ -15,7 +24,7 @@ const Actions = {
       httpPost('/api/v1/sessions', requestData)
       .then((data) => {
         localStorage.setItem('phoenixAuthToken', data.jwt);
-        // setCurrentUser(dispatch, data.user);
+        setCurrentUser(dispatch, data.user);
         dispatch(push('/'));
       })
       .catch((error) => {
@@ -26,6 +35,18 @@ const Actions = {
             error: errorJSON.error,
           });
         });
+      });
+    };
+  },
+
+  currentUser: () => {
+    return (dispatch) => {
+      httpGet('/api/v1/current_user')
+      .then((data) => {
+        setCurrentUser(dispatch, data);
+      })
+      .catch(() => {
+        dispatch(push('/sign_in'));
       });
     };
   },

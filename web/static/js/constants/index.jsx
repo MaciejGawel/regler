@@ -1,6 +1,7 @@
 const Constants = {
   REGISTRATIONS_ERROR: 'REGISTRATIONS_ERROR',
   SESSIONS_ERROR: 'SESSIONS_ERROR',
+  CURRENT_USER: 'CURRENT_USER',
 };
 
 export default Constants;
