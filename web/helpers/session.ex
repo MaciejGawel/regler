@@ -14,7 +14,7 @@ defmodule Regler.Session do
   defp check_password(user, password) do
     case user do
       nil -> Comeonin.Bcrypt.dummy_checkpw()
-      _ -> Comeonin.Bcrypt.checkpw(password, user.encryped_password)
+      _ -> Comeonin.Bcrypt.checkpw(password, user.encrypted_password)
     end
   end
 end
