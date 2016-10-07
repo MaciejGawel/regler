@@ -4,8 +4,8 @@ import { httpPost }       from '../utils';
 import { setCurrentUser } from './sessions';
 
 const Actions = {
-  signUp: (requestData) => {
-    return (dispatch) => {
+  signUp: requestData =>
+    (dispatch) => {
       httpPost('/api/v1/registrations', { user: requestData })
       .then((data) => {
         localStorage.setItem('phoenixAuthToken', data.jwt);
@@ -23,8 +23,7 @@ const Actions = {
           });
         });
       });
-    };
-  },
+    },
 };
 
 export default Actions;

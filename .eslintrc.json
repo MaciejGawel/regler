@@ -22,6 +22,7 @@
     "max-len": ["error", 120],
     "no-multi-spaces": ["error", { "exceptions": { "ImportDeclaration": true } }],
     "react/require-extension": 0,
-    "react/jsx-no-bind": 0
+    "react/jsx-no-bind": 0,
+    "react/forbid-prop-types": 0
   }
 }

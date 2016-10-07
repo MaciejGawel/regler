@@ -24,4 +24,8 @@ class HomeIndex extends React.Component {
   }
 }
 
+HomeIndex.propTypes = {
+  dispatch: React.PropTypes.func.isRequired,
+};
+
 export default connect(null)(HomeIndex);

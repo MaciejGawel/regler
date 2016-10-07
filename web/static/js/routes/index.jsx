@@ -23,16 +23,12 @@ export default function configRoutes(store) {
   };
 
   const ensureUnauthenticated = (nextState, replace, callback) => {
-    const { dispatch } = store;
-    const { session } = store.getState();
-    const { currentUser } = session;
-
     if (localStorage.getItem('phoenixAuthToken')) {
       replace('/');
     }
 
     callback();
-  }
+  };
 
   return (
     <Route component={MainLayout}>

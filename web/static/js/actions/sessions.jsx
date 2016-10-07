@@ -12,8 +12,8 @@ export function setCurrentUser(dispatch, user) {
 }
 
 const Actions = {
-  signIn: (email, password) => {
-    return (dispatch) => {
+  signIn: (email, password) =>
+    (dispatch) => {
       const requestData = {
         session: {
           email,
@@ -36,11 +36,10 @@ const Actions = {
           });
         });
       });
-    };
-  },
+    },
 
-  currentUser: () => {
-    return (dispatch) => {
+  currentUser: () =>
+    (dispatch) => {
       httpGet('/api/v1/current_user')
       .then((data) => {
         setCurrentUser(dispatch, data);
@@ -48,11 +47,10 @@ const Actions = {
       .catch(() => {
         dispatch(push('/sign_in'));
       });
-    };
-  },
+    },
 
-  signOut: () => {
-    return (dispatch) => {
+  signOut: () =>
+    (dispatch) => {
       httpDelete('/api/v1/sessions')
       .then(() => {
         localStorage.removeItem('phoenixAuthToken');
@@ -60,8 +58,7 @@ const Actions = {
         dispatch({ type: Constants.USER_SIGNED_OUT });
         dispatch(push('/sign_in'));
       });
-    };
-  },
+    },
 };
 
 export default Actions;

@@ -63,6 +63,11 @@ class RegistrationsNew extends React.Component {
   }
 }
 
+RegistrationsNew.propTypes = {
+  dispatch: React.PropTypes.func.isRequired,
+  errors: React.PropTypes.array,
+};
+
 const mapStateToProps = state => ({
   errors: state.registration.errors,
 });

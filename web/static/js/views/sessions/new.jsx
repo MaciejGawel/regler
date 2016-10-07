@@ -18,7 +18,7 @@ class SessionsNew extends React.Component {
   }
 
   renderError() {
-    let { error } = this.props;
+    const { error } = this.props;
 
     if (!error) return false;
 
@@ -54,6 +54,11 @@ class SessionsNew extends React.Component {
     );
   }
 }
+
+SessionsNew.propTypes = {
+  dispatch: React.PropTypes.func.isRequired,
+  error: React.PropTypes.string,
+};
 
 const mapStateToProps = state => (
   state.session

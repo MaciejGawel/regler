@@ -17,6 +17,11 @@ class AuthenticatedContainer extends React.Component {
   }
 }
 
+AuthenticatedContainer.propTypes = {
+  children: React.PropTypes.node.isRequired,
+  currentUser: React.PropTypes.object,
+};
+
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
 });
