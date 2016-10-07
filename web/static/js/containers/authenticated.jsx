@@ -3,7 +3,7 @@ import { connect }  from 'react-redux';
 
 class AuthenticatedContainer extends React.Component {
   render() {
-    const { currentUser, dispatch } = this.props;
+    const { currentUser } = this.props;
 
     if (!currentUser) return false;
 

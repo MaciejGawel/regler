@@ -1,6 +1,6 @@
-import { push }               from 'react-router-redux';
-import Constants              from '../constants';
-import { httpGet, httpPost }  from '../utils';
+import { push }                           from 'react-router-redux';
+import Constants                          from '../constants';
+import { httpGet, httpPost, httpDelete }  from '../utils';
 
 export function setCurrentUser(dispatch, user) {
   // Connect to socket
@@ -46,6 +46,18 @@ const Actions = {
         setCurrentUser(dispatch, data);
       })
       .catch(() => {
+        dispatch(push('/sign_in'));
+      });
+    };
+  },
+
+  signOut: () => {
+    return (dispatch) => {
+      httpDelete('/api/v1/sessions')
+      .then(() => {
+        localStorage.removeItem('phoenixAuthToken');
+
+        dispatch({ type: Constants.USER_SIGNED_OUT });
         dispatch(push('/sign_in'));
       });
     };
