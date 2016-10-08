@@ -12,6 +12,9 @@ export default function reducer(state = initialState, action = {}) {
     case Constants.CURRENT_USER:
       return { ...state, currentUser: action.currentUser, socket: action.socket, channel: action.channel, error: null };
 
+    case Constants.USER_SIGNED_OUT:
+      return initialState;
+
     case Constants.SESSIONS_ERROR:
       return { ...state, error: action.error };
 
