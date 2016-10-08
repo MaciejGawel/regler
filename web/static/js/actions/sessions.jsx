@@ -1,14 +1,27 @@
 import { push }                           from 'react-router-redux';
+import { Socket }                         from 'phoenix';
 import Constants                          from '../constants';
 import { httpGet, httpPost, httpDelete }  from '../utils';
 
 export function setCurrentUser(dispatch, user) {
-  // Connect to socket
-
-  dispatch({
-    type: Constants.CURRENT_USER,
-    currentUser: user,
+  const socket = new Socket('/socket', {
+    params: { token: localStorage.getItem('phoenixAuthToken') },
   });
+
+  socket.connect();
+
+  const channel = socket.channel(`users:${user.id}`);
+
+  if (channel.state !== 'joined') {
+    channel.join().receive('ok', () => {
+      dispatch({
+        type: Constants.CURRENT_USER,
+        currentUser: user,
+        socket,
+        channel,
+      });
+    });
+  }
 }
 
 const Actions = {
