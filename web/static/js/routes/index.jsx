@@ -4,7 +4,7 @@ import MainLayout             from '../layouts/main';
 import AuthenticatedContainer from '../containers/authenticated';
 import RegistrationsNew       from '../views/registrations/new';
 import SessionNew             from '../views/sessions/new';
-import HomeIndex              from '../views/home/index';
+import EventsIndex            from '../views/events/index';
 import Actions                from '../actions/sessions';
 
 export default function configRoutes(store) {
@@ -36,7 +36,7 @@ export default function configRoutes(store) {
       <Route path="/sign_in" component={SessionNew} onEnter={ensureUnauthenticated} />
 
       <Route path="/" component={AuthenticatedContainer} onEnter={ensureAuthenticated}>
-        <IndexRoute component={HomeIndex} />
+        <IndexRoute component={EventsIndex} />
       </Route>
     </Route>
   );
