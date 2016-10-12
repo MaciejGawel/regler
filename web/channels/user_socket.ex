@@ -27,5 +27,5 @@ defmodule Regler.UserSocket do
   def connect(_params, _socket), do: :error
 
 
-  def id(socket), do: "users_socket:#{socket.assings.current_user.id}"
+  def id(socket), do: "users_socket:#{socket.assigns.current_user.id}"
 end
