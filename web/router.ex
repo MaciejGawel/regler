@@ -25,6 +25,8 @@ defmodule Regler.Router do
       delete "/sessions", SessionController, :delete
 
       get "/current_user", CurrentUserController, :show
+
+      resources "/events", EventController, only: [:index, :create]
     end
   end
 

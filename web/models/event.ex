@@ -1,6 +1,8 @@
 defmodule Regler.Event do
   use Regler.Web, :model
 
+  @derive {Poison.Encoder, only: [:id, :name, :description, :starts_at, :ends_at, :user_id]}
+
   schema "events" do
     field :name, :string
     field :description, :string
