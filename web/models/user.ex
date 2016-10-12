@@ -1,6 +1,8 @@
 defmodule Regler.User do
   use Regler.Web, :model
 
+  alias Regler.Event
+
   @derive {Poison.Encoder, only: [:id, :username, :email]}
 
   schema "users" do
@@ -8,6 +10,8 @@ defmodule Regler.User do
     field :email, :string
     field :encrypted_password, :string
     field :password, :string, virtual: true
+
+    has_many :owned_events, Event
 
     timestamps
   end
