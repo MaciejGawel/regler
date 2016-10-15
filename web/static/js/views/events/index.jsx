@@ -2,6 +2,7 @@ import React                from 'react';
 import { connect }          from 'react-redux';
 import { setDocumentTitle } from '../../utils';
 import Actions              from '../../actions/events';
+import EventCard            from '../../components/events/card';
 
 class EventsIndex extends React.Component {
   componentDidMount() {
@@ -37,7 +38,7 @@ class EventsIndex extends React.Component {
 
   renderEvents(events) {
     return events.map(event =>
-      <div key={event.id}>{event.name}</div>
+      <EventCard key={event.id} dispatch={this.props.dispatch} {...event} />
     );
   }
 
